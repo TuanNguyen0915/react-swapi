@@ -2,6 +2,7 @@ import { getAllStarships } from '../../services/sw-api'
 import { useEffect, useState } from 'react'
 import Ship from '../../components/Ship/Ship'
 import styles from './ShipsList.module.css'
+import { Link } from 'react-router-dom'
 
 const ShipList = () => {
   const [ships, setShips] = useState([])
@@ -24,9 +25,11 @@ const ShipList = () => {
 
   return (
     <>
-     <div className={styles.shipContainer}>
+      <div className={styles.shipContainer}>
         {ships.map(ship =>
-          <Ship key={ship.name}  ship={ship} />
+          <Link to='/ships/details' key={ship.name} state={{ship}}>
+            <Ship ship={ship} />
+          </Link>
         )}
       </div>
     </>
