@@ -1,0 +1,8 @@
+.shipContainer{
+  border: 1px solid black;
+  min-width: 250px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}

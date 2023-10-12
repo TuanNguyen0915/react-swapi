@@ -3,7 +3,7 @@ import './Nav.module.css'
 const Nav = () => {
   return (
     <nav>
-      <NavLink to='/'>STAR WAR STARSHIPS</NavLink>
+      <NavLink to='/ships'>STAR WAR STARSHIPS</NavLink>
     </nav>
   )  
 }

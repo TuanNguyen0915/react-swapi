@@ -6,3 +6,11 @@
   letter-spacing: 1px;
 }
 
+button {
+  background: orange;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 4px;
+}
