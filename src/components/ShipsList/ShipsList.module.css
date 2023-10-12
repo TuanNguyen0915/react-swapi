@@ -1,0 +1,17 @@
+
+.shipsList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shipCard {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  min-width: 250px;
+  background: black;
+  color: coral;
+  
+}

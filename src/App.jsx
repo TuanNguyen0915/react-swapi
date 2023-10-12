@@ -1,33 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// npm modules
+// import { Route, Routes } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
+// service
+import { getAllStarships } from './services/sw-api'
+
+//components
+import ShipsList from './components/ShipsList/ShipsList'
+
+import Nav from './components/Nav/Nav'
+
+
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [ships, setShips] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setIsLoading(true)
+    const fetchShips = async () => {
+      const shipsData = await getAllStarships()
+      setShips(shipsData.results)
+      setIsLoading(false)
+    }
+    fetchShips()
+  }, [])
+
+  if (isLoading) return <h2>Loading ships ...</h2>
 
   return (
     <>
+      <Nav />
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <ShipsList ships={ships} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
